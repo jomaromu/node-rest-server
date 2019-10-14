@@ -15,7 +15,7 @@ app.get('/usuario', (req, res) => {
     desde = Number(desde);
     limite = parseInt(limite);
 
-    Usuario.find({ estado: false }, 'role estado google nombre email') // barrer todos los registros
+    Usuario.find({ estado: true }, 'role estado google nombre email') // barrer todos los registros
         .skip(desde)
         .limit(limite)
         .exec((err, usuarios) => {
@@ -28,7 +28,7 @@ app.get('/usuario', (req, res) => {
             }
 
             // conteo de los registros
-            Usuario.count({ estado: false }, (err, conteo) => {
+            Usuario.count({ estado: true }, (err, conteo) => {
 
                 res.json({
                     Ok: true,
